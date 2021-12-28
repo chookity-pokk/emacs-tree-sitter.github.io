@@ -17,7 +17,8 @@
       
       <guid>https://emacs-tree-sitter.github.io/installation/</guid>
       <description>tree-sitter requires Emacs 25.1 or above, built with dynamic module support. Some Emacs distributions have this disabled by default. To check whether your Emacs has dynamic module support enabled, try evaluating one of these:
-(functionp &amp;#39;module-load) ; should be t module-file-suffix ; should be non-nil  The methods below download pre-compiled binaries, so they only work for macOS, Linux and Windows, on x86_64 machines. For other systems, you will have to build from source.</description>
+(functionp &amp;#39;module-load) ; should be t module-file-suffix ; should be non-nil  Upon byte compilation and first load, the package tree-sitter (tsc) will try to obtain the dynamic module using 2 mechanisms:
+ Downloading a pre-compiled binary from GitHub.</description>
     </item>
     
     <item>
@@ -129,7 +130,7 @@ When the query is executed, each captured node is tagged with a symbol, whose na
       <guid>https://emacs-tree-sitter.github.io/tree-sitter-mode/</guid>
       <description>tree-sitter-mode is a minor mode that provides a buffer-local up-to-date syntax tree.
 TODO: Write this.
- Hook: tree-sitter-after-on-hook  Hook: tree-sitter-after-first-parse-hook  Hook: tree-sitter-after-change-functions  Variable: tree-sitter-major-mode-language-alist  Variable: tree-sitter-language  Variable: tree-sitter-tree  Function: tree-sitter-node-at-point [node-type]   Writing a Dependent Minor Mode See the docstring of tree-sitter--handle-dependent.</description>
+ Hook: tree-sitter-after-on-hook  Hook: tree-sitter-after-first-parse-hook  Hook: tree-sitter-after-change-functions  Variable: tree-sitter-major-mode-language-alist  Variable: tree-sitter-language  Variable: tree-sitter-tree  Function: tree-sitter-node-at-pos [node-type] [pos]   Writing a Dependent Minor Mode See the docstring of tree-sitter--handle-dependent.</description>
     </item>
     
   </channel>

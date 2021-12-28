@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-12T09:47:51 &#43;07">
+<meta name="revised" content="2021-12-28T21:37:14 &#43;07">
 <title>Installation :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -214,7 +214,12 @@ if (!doNotTrack) {
 
 <span class="nv">module-file-suffix</span> <span class="c1">; should be non-nil</span>
 </code></pre></div>
-<div class="notices note" ><p><p>The methods below download pre-compiled binaries, so they only work for macOS, Linux and Windows, on x86_64 machines. For other systems, you will have to build from source.</p>
+<div class="notices note" ><p><p>Upon byte compilation and first load, the package <code>tree-sitter</code> (<code>tsc</code>) will try to obtain the dynamic module using 2 mechanisms:</p>
+<ul>
+<li>Downloading a pre-compiled binary from GitHub. This only works for macOS/Linux/Windows, on x86_64 machines.</li>
+<li>Compiling the binary from the Rust source. This requires the <a href="https://rustup.rs/">Rust toolchain</a>.</li>
+</ul>
+<p>This behavior can be customized by setting the variable <code>tsc-dyn-get-from</code>, <strong>before tree-sitter (tsc) is byte-compiled/loaded</strong>. Its default value is <code>(:github :compilation)</code>. For example, on Apple Silicon, you should set it to <code>(:compilation)</code>.</p>
 </p></div>
 
 <h2 id="installing-from-melpa">Installing from MELPA</h2>

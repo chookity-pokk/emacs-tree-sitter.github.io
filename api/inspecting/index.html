@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-12T09:47:51 &#43;07">
+<meta name="revised" content="2021-12-28T21:37:14 &#43;07">
 <title>Inspecting :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -278,14 +278,14 @@ if (!doNotTrack) {
 </dd>
 <dt><code>tsc-get-nth-named-child</code> <em><code>node nth</code></em></dt>
 <dd>Get a child node by its 0-based index (any, or named only).
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">func</span> <span class="p">(</span><span class="nv">tree-sitter-node-at-point</span> <span class="ss">&#39;function_item</span><span class="p">)))</span>
+<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">func</span> <span class="p">(</span><span class="nv">tree-sitter-node-at-pos</span> <span class="ss">&#39;function_item</span><span class="p">)))</span>
   <span class="p">(</span><span class="nv">tsc-get-nth-child</span> <span class="nv">func</span> <span class="mi">0</span><span class="p">)</span>        <span class="c1">; An &#34;fn&#34; node</span>
   <span class="p">(</span><span class="nv">tsc-get-nth-named-child</span> <span class="nv">func</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; An &#39;identifier node</span>
 </code></pre></div></dd>
 <dt><code>tsc-get-child-by-field</code> <em><code>node field</code></em></dt>
 <dd>Certain node types assign unique field names to specific child nodes. This function allows retrieving child nodes by their field names, instead of by their indexes. The field name should be specified as a keyword.
 <div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="c1">;; Get name of the current function definition.</span>
-<span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">func</span> <span class="p">(</span><span class="nv">tree-sitter-node-at-point</span> <span class="ss">&#39;function_item</span><span class="p">)))</span>
+<span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">func</span> <span class="p">(</span><span class="nv">tree-sitter-node-at-pos</span> <span class="ss">&#39;function_item</span><span class="p">)))</span>
   <span class="p">(</span><span class="nv">tsc-node-text</span> <span class="p">(</span><span class="nv">tsc-get-child-by-field</span> <span class="nv">func</span> <span class="nb">:name</span><span class="p">)))</span>
 </code></pre></div>
 <div class="notices info" ><p>In Tree-sitter&rsquo;s <a href="https://tree-sitter.github.io/tree-sitter/using-parsers#node-field-names">documentation</a>, due to the low-level nature of C and JSON, field names are specified as strings. Representing field names as keywords makes it more Lisp-idiomatic.</p></div>
