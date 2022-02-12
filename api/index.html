@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-02-04T18:26:02 &#43;07">
+<meta name="revised" content="2022-02-12T15:35:05 UTC">
 <title>Core APIs :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -213,18 +213,17 @@ if (!doNotTrack) {
 <li><code>tree-sitter</code>: The high-level features, i.e. the <strong>framework</strong> and the <strong>apps</strong>. For example, <a href="../syntax-highlighting/">Syntax Highlighting</a>.</li>
 <li><code>tsc</code>: The core functionalities, i.e. the <strong>lib</strong>, which is the focus of this section.</li>
 </ul>
-
-<div class="notices warning" ><p><p>In older versions, the core APIs were prefixed with <code>ts-</code>, and provided by <code>tree-sitter-core.el</code>. They are still available as deprecated aliases, but will eventually be removed.</p>
-<p>This was changed to <a href="https://github.com/melpa/melpa/pull/7112#issuecomment-703136075">conform with MELPA&rsquo;s conventions</a> and to avoid <a href="https://github.com/emacs-tree-sitter/elisp-tree-sitter/issues/35">naming conflicts with <code>ts.el</code></a>.</p>
-</p></div>
-
+<p>{{% notice warning %}}
+In older versions, the core APIs were prefixed with <code>ts-</code>, and provided by <code>tree-sitter-core.el</code>. They are still available as deprecated aliases, but will eventually be removed.</p>
+<p>This was changed to <a href="https://github.com/melpa/melpa/pull/7112#issuecomment-703136075">conform with MELPA&rsquo;s conventions</a> and to avoid <a href="https://github.com/emacs-tree-sitter/elisp-tree-sitter/issues/35">naming conflicts with <code>ts.el</code></a>.
+{{% /notice %}}</p>
 <p>Tree-sitter&rsquo;s <a href="https://tree-sitter.github.io/tree-sitter/using-parsers">own documentation</a> is a good read to understand its concepts and features. This documentation focuses more on details that are specific to Emacs Lisp.</p>
 <p>In order to follow Emacs Lisp&rsquo;s conventions, functions and data types in this package may differ from those in Tree-sitter&rsquo;s C/Rust APIs. These differences are discussed in their corresponding sections.</p>
 <h2 id="data-types">Data Types</h2>
 <ul>
 <li><code>language</code>: A <a href="/languages/">language object</a> that defines how to parse a language.</li>
 <li><code>parser</code>: A stateful object that consumes source code and <a href="/api/parsing/">produces a parse tree</a>.</li>
-<li><code>tree</code>: A parse tree that contains syntax <code>node</code>'s, which can be <a href="/api/inspecting/">inspected</a>.</li>
+<li><code>tree</code>: A parse tree that contains syntax <code>node</code>&rsquo;s, which can be <a href="/api/inspecting/">inspected</a>.</li>
 <li><code>cursor</code>: A stateful object used to <a href="/api/walking/">traverse a parse tree</a>.</li>
 <li><code>query</code>: A compiled list of <a href="/syntax-highlighting/queries/">structural patterns</a> to search for in a parse tree.</li>
 <li><code>query-cursor</code> A stateful object used to <a href="/api/querying/">execute a query</a>.</li>
@@ -236,10 +235,9 @@ if (!doNotTrack) {
 </li>
 <li><code>range</code>: A vector in the form of <em><code>[start-bytepos end-bytepos start-point end-point]</code></em>.</li>
 </ul>
-
-<div class="notices info" ><p><p>These types are understood only by this package and its type-checking predicates, which are useful for debugging: <code>tsc-language-p</code>, <code>tsc-tree-p</code>, <code>tsc-node-p</code>&hellip; They are not recognized by <code>type-of</code>.</p>
-</p></div>
-
+<p>{{% notice info %}}
+These types are understood only by this package and its type-checking predicates, which are useful for debugging: <code>tsc-language-p</code>, <code>tsc-tree-p</code>, <code>tsc-node-p</code>&hellip; They are not recognized by <code>type-of</code>.
+{{% /notice %}}</p>
 <p>For consistency with Emacs&rsquo;s conventions, there are some differences compared to Tree-sitter&rsquo;s C/Rust APIs:</p>
 <ul>
 <li>It uses <strong>1-based</strong> byte positions, instead of 0-based byte offsets.</li>
@@ -259,7 +257,7 @@ if (!doNotTrack) {
 </div>
 
 <div id="navigation">
-  <a class="nav nav-prev" href="/api/querying/" title="Querying"> <i class="fa fa-chevron-left"></i><label>Querying</label></a>
+  <a class="nav nav-prev" href="/syntax-highlighting/interface-for-modes/" title="Interface for Modes"> <i class="fa fa-chevron-left"></i><label>Interface for Modes</label></a>
     <a class="nav nav-next" href="/api/parsing/" title="Parsing" style="margin-right: 0px;"><label>Parsing</label><i class="fa fa-chevron-right"></i></a></div>
 
 

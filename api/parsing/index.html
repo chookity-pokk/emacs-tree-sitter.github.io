@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-02-04T18:26:01 &#43;07">
+<meta name="revised" content="2022-02-12T15:35:05 UTC">
 <title>Parsing :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -208,10 +208,9 @@ if (!doNotTrack) {
     
 
     
-    
-<div class="notices info" ><p><p>The minor mode <code>tree-sitter-mode</code> provides the high-level interface for working with an up-to-date buffer-local syntax tree. <a href="/tree-sitter-mode/#writing-a-dependent-minor-mode">Writing a Dependent Minor Mode</a> is recommended over directly using the low level parsing APIs below.</p>
-</p></div>
-
+    <p>{{% notice info %}}
+The minor mode <code>tree-sitter-mode</code> provides the high-level interface for working with an up-to-date buffer-local syntax tree. <a href="/tree-sitter-mode/#writing-a-dependent-minor-mode">Writing a Dependent Minor Mode</a> is recommended over directly using the low level parsing APIs below.
+{{% /notice %}}</p>
 <p>Parsing is done through stateful parser objects.</p>
 <dl>
 <dt><code>tsc-make-parser</code></dt>
@@ -220,7 +219,7 @@ if (!doNotTrack) {
 <dd>Set a parser&rsquo;s active language.</dd>
 <dt><code>tsc-parse-string</code> <em><code>parser string</code></em></dt>
 <dd>Parse a single string of source code. This is useful for quick, <strong>one-off</strong> parsing needs.
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">parser</span> <span class="p">(</span><span class="nv">tsc-make-parser</span><span class="p">)))</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">parser</span> <span class="p">(</span><span class="nv">tsc-make-parser</span><span class="p">)))</span>
   <span class="p">(</span><span class="nv">tsc-set-language</span> <span class="nv">parser</span> <span class="p">(</span><span class="nv">tree-sitter-require</span> <span class="ss">&#39;rust</span><span class="p">))</span>
   <span class="p">(</span><span class="nv">tsc-parse-string</span> <span class="nv">parser</span> <span class="s">&#34;fn foo() {}&#34;</span><span class="p">))</span>
 </code></pre></div></dd>

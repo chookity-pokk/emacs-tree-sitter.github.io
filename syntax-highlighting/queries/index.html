@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-02-04T18:26:02 &#43;07">
+<meta name="revised" content="2022-02-12T15:35:05 UTC">
 <title>Queries :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -218,73 +218,72 @@ if (!doNotTrack) {
 
     
     <p>A query is a set of patterns, written in a Lisp-like syntax.</p>
-
-<div class="notices info" ><p><p>Queries are language-specific. Different language grammars use different <em>node types</em> and <em>field names</em>. Examples in this section apply to Rust.</p>
-</p></div>
-
+<p>{{% notice info %}}
+Queries are language-specific. Different language grammars use different <em>node types</em> and <em>field names</em>. Examples in this section apply to Rust.
+{{% /notice %}}</p>
 <h2 id="patterns">Patterns</h2>
 <p>A <strong>pattern</strong> is an S-expression (Lisp form), optionally <em>preceded</em> by a field name, <em>suffixed</em> with a quantifier, and/or <em>followed</em> by a capture name.</p>
 <p>A node form is a list form whose first element is a symbol (except for the special symbols, described later). The symbol specifies the type of node to match, while the remaining elements describe what the inner structure of a matched node (i.e. its child nodes) should look like.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match any function call.</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match any function call.</span>
 <span class="p">(</span><span class="nf">call_expression</span><span class="p">)</span>
 
 <span class="c1">;; Match any function call where at least one arg is an identifier.</span>
 <span class="p">(</span><span class="nf">call_expression</span> <span class="p">(</span><span class="nf">arguments</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)))</span>
 </code></pre></div><p>A string literal denotes an <strong>anonymous node</strong>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match the operator `==&#39; .</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match the operator `==&#39; .</span>
 <span class="s">&#34;==&#34;</span>
 </code></pre></div><h2 id="captures-and-fields">Captures and Fields</h2>
 <p>Captures allow associating names with specific nodes in a pattern. A symbol starting with the character <code>@</code> denotes a <strong>capture name</strong>. It is written after the pattern it refers to. When used for syntax highlighting, capture names are then mapped to display faces, which determine the appearance of the corresponding nodes.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match function calls. For each match, the function name is captured</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match function calls. For each match, the function name is captured</span>
 <span class="c1">;; under the name `function.call&#39;, and the argument list is associated</span>
 <span class="c1">;; with the name `function.args&#39;.</span>
 <span class="p">(</span><span class="nf">call_expression</span>
  <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@function</span><span class="o">.</span><span class="nv">call</span>
  <span class="p">(</span><span class="nf">arguments</span><span class="p">)</span> <span class="nv">@function</span><span class="o">.</span><span class="nv">args</span><span class="p">)</span>
 </code></pre></div><p>Certain node types assign unique <strong>field names</strong> to specific child nodes. Within a pattern, a field name is denoted by a symbol ending with the character <code>:</code>, written before the child pattern it refers to.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Using field names, for clarity.</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Using field names, for clarity.</span>
 <span class="p">(</span><span class="nf">call_expression</span>
  <span class="nv">function:</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@function</span><span class="o">.</span><span class="nv">call</span>
  <span class="nv">arguments:</span> <span class="p">(</span><span class="nf">arguments</span><span class="p">)</span> <span class="nv">@function</span><span class="o">.</span><span class="nv">args</span><span class="p">)</span>
 </code></pre></div><p>A symbol prefixed with the character <code>!</code> denotes a <strong>negated field</strong>, which requires that the pattern matches only nodes that lack the specified field.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match non-generic struct definitions.</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match non-generic struct definitions.</span>
 <span class="p">(</span><span class="nf">struct_item</span>
  <span class="nv">name:</span> <span class="p">(</span><span class="nf">type_identifier</span><span class="p">)</span> <span class="nv">@struct_name</span>
  <span class="nv">!type_parameters</span><span class="p">)</span>
 </code></pre></div><h2 id="groups-and-predicates">Groups and Predicates</h2>
 <p>A <strong>group</strong> form is a list form whose first element is a node form. It is used to denote a sequence of sibling nodes, and to group predicate forms with node forms.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match a comment followed by a function declaration.</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match a comment followed by a function declaration.</span>
 <span class="p">((</span><span class="nf">line_comment</span><span class="p">)</span>
  <span class="p">(</span><span class="nf">function_item</span><span class="p">))</span>
 </code></pre></div><p>A <strong>predicate</strong> form can appear anywhere in a group form. It is a list form whose first element is a symbol starting with the character <code>.</code>. Each remaining element is either a capture name, or a string literal.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match identifiers written in SCREAMING_SNAKE_CASE.</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match identifiers written in SCREAMING_SNAKE_CASE.</span>
 <span class="p">((</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@constant</span>
  <span class="p">(</span><span class="o">.</span><span class="nv">match?</span> <span class="nv">@constant</span> <span class="s">&#34;^[A-Z][A-Z_\\d]+&#34;</span><span class="p">))</span>
 </code></pre></div><p>Currently, the supported predicates for syntax highlighting are <code>.match?</code>, <code>.not-match?</code>, <code>.eq?</code> and <code>.not-eq?</code>.</p>
 <h2 id="alternations">Alternations</h2>
 <p>An <strong>alternation</strong> form is a vector of patterns. It denotes a pattern that matches a node when any of the alternative patterns matches.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">[(</span><span class="nf">self</span><span class="p">)</span> <span class="p">(</span><span class="nf">super</span><span class="p">)</span> <span class="p">(</span><span class="nf">crate</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">[(</span><span class="nf">self</span><span class="p">)</span> <span class="p">(</span><span class="nf">super</span><span class="p">)</span> <span class="p">(</span><span class="nf">crate</span><span class="p">)</span>
  <span class="p">(</span><span class="nf">mutable_specifier</span><span class="p">)]</span> <span class="nv">@keyword</span>
 
 <span class="p">[</span><span class="s">&#34;==&#34;</span> <span class="s">&#34;!=&#34;</span> <span class="s">&#34;&lt;&#34;</span> <span class="s">&#34;&lt;=&#34;</span> <span class="s">&#34;&gt;&#34;</span> <span class="s">&#34;&gt;=&#34;</span><span class="p">]</span> <span class="nv">@operator</span>
 
 <span class="p">(</span><span class="nf">call_expression</span>
  <span class="nv">function:</span> <span class="p">[(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@function</span><span class="o">.</span><span class="nv">call</span>
-            <span class="p">(</span><span class="nf">field_expression</span> <span class="nv">field:</span> <span class="p">(</span><span class="nf">field_identifier</span><span class="p">)</span> <span class="nv">@method</span><span class="o">.</span><span class="nv">call</span><span class="p">)])</span>
+	    <span class="p">(</span><span class="nf">field_expression</span> <span class="nv">field:</span> <span class="p">(</span><span class="nf">field_identifier</span><span class="p">)</span> <span class="nv">@method</span><span class="o">.</span><span class="nv">call</span><span class="p">)])</span>
 </code></pre></div><h2 id="repetitions-and-wildcards">Repetitions and Wildcards</h2>
 <p>A form can be suffixed by one of the <strong>quantification operators</strong>: at-most-once <code>?</code>, at-least-once <code>+</code>, zero-or-more <code>*</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match any function call. Capture a string arg, if any.</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Match any function call. Capture a string arg, if any.</span>
 <span class="p">(</span><span class="nf">call_expression</span>
   <span class="nv">function:</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@function</span><span class="o">.</span><span class="nv">call</span>
   <span class="nv">arguments:</span> <span class="p">(</span><span class="nf">arguments</span> <span class="p">(</span><span class="nf">string_literal</span><span class="p">)</span><span class="nv">?</span> <span class="nv">@the-string-arg</span><span class="p">))</span>
 </code></pre></div><p>The special <strong>wildcard</strong> symbol <code>_</code> matches any node (except for anonymous nodes).</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Leaving out child nodes&#39; types, for brevity.</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; Leaving out child nodes&#39; types, for brevity.</span>
 <span class="p">(</span><span class="nf">call_expression</span>
  <span class="nv">function:</span> <span class="p">(</span><span class="nf">_</span><span class="p">)</span> <span class="nv">@function</span><span class="o">.</span><span class="nv">call</span>
  <span class="nv">arguments:</span> <span class="p">(</span><span class="nf">_</span><span class="p">)</span> <span class="nv">@function</span><span class="o">.</span><span class="nv">args</span><span class="p">)</span>
 </code></pre></div><h2 id="anchors">Anchors</h2>
 <p>The special dot symbol <code>.</code> denotes an <strong>anchor</strong>, which effectively &ldquo;glues together&rdquo; its 2 sides, disallowing any nodes in between (except for anonymous nodes).</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; A string anywhere in the argument list.</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; A string anywhere in the argument list.</span>
 <span class="p">(</span><span class="nf">call_expression</span> <span class="p">(</span><span class="nf">arguments</span> <span class="p">(</span><span class="nf">string_literal</span><span class="p">)))</span>
 
 <span class="c1">;; 2 consecutive strings anywhere in the argument list.</span>
@@ -295,15 +294,14 @@ if (!doNotTrack) {
 
 <span class="c1">;; Last argument is a string.</span>
 <span class="p">(</span><span class="nf">call_expression</span> <span class="p">(</span><span class="nf">arguments</span> <span class="p">(</span><span class="nf">string_literal</span><span class="p">)</span> <span class="o">.</span><span class="p">))</span>
-</code></pre></div>
-<div class="notices info" ><p><p>The dot symbol <code>.</code> is not a valid read syntax in Emacs Lisp, so it has to be escaped in query patterns embedded in code:</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">tree-sitter-hl-add-patterns</span> <span class="ss">&#39;c</span>
+</code></pre></div><p>{{% notice info %}}
+The dot symbol <code>.</code> is not a valid read syntax in Emacs Lisp, so it has to be escaped in query patterns embedded in code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">tree-sitter-hl-add-patterns</span> <span class="ss">&#39;c</span>
  <span class="p">[((</span><span class="nv">call_expression</span>
     <span class="nv">function:</span> <span class="p">(</span><span class="nv">identifier</span><span class="p">)</span> <span class="nv">@keyword</span>
     <span class="nv">arguments:</span> <span class="p">(</span><span class="nv">argument_list</span> <span class="nv">\.</span> <span class="p">(</span><span class="nv">string_literal</span><span class="p">)</span> <span class="nv">@function</span><span class="p">))</span>
    <span class="p">(</span><span class="o">.</span><span class="nv">eq?</span> <span class="nv">@keyword</span> <span class="s">&#34;DEFUN&#34;</span><span class="p">))])</span>
-</code></pre></div></p></div>
-
+</code></pre></div><p>{{% /notice %}}</p>
 <p>For more details, see Tree-sitter&rsquo;s documentation:</p>
 <ul>
 <li><a href="https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries">https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries</a></li>

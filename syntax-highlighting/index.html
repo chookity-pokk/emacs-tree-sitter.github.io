@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-02-04T18:26:02 &#43;07">
+<meta name="revised" content="2022-02-12T15:35:05 UTC">
 <title>Syntax Highlighting :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -208,13 +208,16 @@ if (!doNotTrack) {
 
     
 
-<p>Syntax highlighting is provided by the minor mode <code>tree-sitter-hl-mode</code>. It overrides the regex-based highlighting provided by <code>font-lock-mode</code>, using the syntax tree provided by <code>tree-sitter-mode</code>. It is based on <a href="/syntax-highlighting/queries/"><strong>tree queries</strong></a>, a system for pattern-matching on Tree-sitter&rsquo;s syntax trees.</p>
+<p>The minor mode <code>tree-sitter-hl-mode</code> provides the framework for syntax highlighting. It overrides the regex-based highlighting provided by <code>font-lock-mode</code>, using the syntax tree provided by <code>tree-sitter-mode</code>. It is based on <a href="/syntax-highlighting/queries/"><strong>tree queries</strong></a>, a system for pattern-matching on Tree-sitter&rsquo;s syntax trees.</p>
 <p>It can be toggled in a buffer by the command <code>tree-sitter-hl-mode</code>, or enabled through major mode hooks:</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;rust-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-hl-mode</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;rust-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-hl-mode</span><span class="p">)</span>
 </code></pre></div><p>To enable it whenever possible (assuming the language major modes were already installed):</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-tree-sitter-mode</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-tree-sitter-mode</span><span class="p">)</span>
 <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;tree-sitter-after-on-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-hl-mode</span><span class="p">)</span>
-</code></pre></div><h2 id="tree-sitter-langs">tree-sitter-langs</h2>
+</code></pre></div><p>{{% notice info %}}
+Like <code>font-lock-mode</code>, <code>tree-sitter-hl-mode</code> provides only the mechanisms. The actual highlighting rules are provided by language-specific packages, or a language bundle like <code>tree-sitter-langs</code>.
+{{% /notice %}}</p>
+<h2 id="tree-sitter-langs">tree-sitter-langs</h2>
 <p>The package <code>tree-sitter-langs</code> provides syntax highlighting <a href="https://github.com/emacs-tree-sitter/tree-sitter-langs/tree/master/queries">queries</a> for some languages.</p>
 <p>Most of them are <strong>intentionally different</strong> from those from upstream repositories, which are more geared towards <em>GitHub&rsquo;s use cases</em>. We try to be more consistent with <em>Emacs&rsquo;s existing conventions</em>. The general principles are:</p>
 <ul>
@@ -229,11 +232,10 @@ if (!doNotTrack) {
 <li>Special faces should have high priority (placed earlier in the pattern list): <code>@function.macro</code>, <code>@type.builtin</code>, <code>@variable.special</code>.</li>
 <li>Patterns whose internals may be highlighted should have low priority (placed towards the end). Example: strings with interpolation.</li>
 </ul>
-
-<div class="notices info" ><p><p>For some languages, the highlighting patterns are similar to those from upstream <a href="https://github.com/tree-sitter">grammar repositories</a>, instead of extensively following the above principles. They should be considered WIP.</p>
-<p>Contributions to improve them are welcome.</p>
-</p></div>
-
+<p>{{% notice info %}}
+For some languages, the highlighting patterns are similar to those from upstream <a href="https://github.com/tree-sitter">grammar repositories</a>, instead of extensively following the above principles. They should be considered WIP.</p>
+<p>Contributions to improve them are welcome.
+{{% /notice %}}</p>
 
 
 

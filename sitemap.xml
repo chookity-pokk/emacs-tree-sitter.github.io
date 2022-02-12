@@ -1,69 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://emacs-tree-sitter.github.io/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/installation/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/getting-started/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/languages/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/syntax-highlighting/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/syntax-highlighting/queries/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/syntax-highlighting/customization/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/syntax-highlighting/interface-for-modes/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/api/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/api/parsing/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/api/inspecting/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/api/walking/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/api/querying/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/tree-sitter-mode/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://emacs-tree-sitter.github.io/tags/</loc>
   </url>
-  
 </urlset>

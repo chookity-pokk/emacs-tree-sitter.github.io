@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-02-04T18:26:01 &#43;07">
+<meta name="revised" content="2022-02-12T15:35:05 UTC">
 <title>Getting Started :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -211,36 +211,35 @@ if (!doNotTrack) {
     
     <p>The minor mode <code>tree-sitter-mode</code> provides a buffer-local syntax tree, which is kept up-to-date with changes to the buffer&rsquo;s text.</p>
 <p>It can be toggled in a buffer by the command <code>tree-sitter-mode</code>, or enabled through major mode hooks:</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;rust-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-mode</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;rust-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-mode</span><span class="p">)</span>
 </code></pre></div><p>To enable it for all supported major modes:</p>
-<div class="highlight"><pre class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-tree-sitter-mode</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-tree-sitter-mode</span><span class="p">)</span>
 </code></pre></div><p>For the full list of supported major modes, check the variable <code>tree-sitter-major-mode-language-alist</code>.</p>
 <h2 id="turn-on-syntax-highlighting">Turn on Syntax Highlighting</h2>
 <p>Run <code>M-x tree-sitter-hl-mode</code> to replace the regex-based highlighting provided by <code>font-lock-mode</code> with tree-based syntax highlighting.</p>
 <p>For more details, see <a href="../syntax-highlighting/">Syntax Highlighting</a>.</p>
 <h2 id="view-the-syntax-tree">View the Syntax Tree</h2>
 <p>Run <code>M-x tree-sitter-debug-mode</code> to show the current buffer&rsquo;s syntax tree in a separate buffer.</p>
-
-<div class="notices warning" ><p><p>Printing the syntax tree can be slow for very large buffers, as it hasn&rsquo;t been optimized yet.</p>
-</p></div>
-
+<p>{{% notice warning %}}
+Printing the syntax tree can be slow for very large buffers, as it hasn&rsquo;t been optimized yet.
+{{% /notice %}}</p>
 <h2 id="play-around-with-tree-queries">Play around with Tree Queries</h2>
 <p>Run <code>M-x tree-sitter-query-builder</code> to open the query playground, where you can write tree queries and see matches highlighted in the source buffer.</p>
 <p>Here are some example queries to try:</p>
 <ul>
 <li>
 <p>Rust:</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">(</span><span class="nf">function_item</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">(</span><span class="nf">function_item</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
 <span class="p">(</span><span class="nf">impl_item</span> <span class="p">(</span><span class="nf">type_identifier</span><span class="p">)</span> <span class="nv">@impl</span><span class="p">)</span>
 </code></pre></div></li>
 <li>
 <p>Python:</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">(</span><span class="nf">class_definition</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@class</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">(</span><span class="nf">class_definition</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@class</span><span class="p">)</span>
 <span class="p">(</span><span class="nf">function_definition</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
 </code></pre></div></li>
 <li>
 <p>JavaScript:</p>
-<div class="highlight"><pre class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">(</span><span class="nf">function_declaration</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">(</span><span class="nf">function_declaration</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
 <span class="p">(</span><span class="nf">variable_declarator</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@var</span><span class="p">)</span>
 </code></pre></div></li>
 </ul>
