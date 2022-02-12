@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-02-12T15:35:05 UTC">
+<meta name="revised" content="2022-02-12T16:29:15 UTC">
 <title>Queries :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -218,9 +218,10 @@ if (!doNotTrack) {
 
     
     <p>A query is a set of patterns, written in a Lisp-like syntax.</p>
-<p>{{% notice info %}}
-Queries are language-specific. Different language grammars use different <em>node types</em> and <em>field names</em>. Examples in this section apply to Rust.
-{{% /notice %}}</p>
+
+<div class="notices info" ><p><p>Queries are language-specific. Different language grammars use different <em>node types</em> and <em>field names</em>. Examples in this section apply to Rust.</p>
+</p></div>
+
 <h2 id="patterns">Patterns</h2>
 <p>A <strong>pattern</strong> is an S-expression (Lisp form), optionally <em>preceded</em> by a field name, <em>suffixed</em> with a quantifier, and/or <em>followed</em> by a capture name.</p>
 <p>A node form is a list form whose first element is a symbol (except for the special symbols, described later). The symbol specifies the type of node to match, while the remaining elements describe what the inner structure of a matched node (i.e. its child nodes) should look like.</p>
@@ -294,14 +295,15 @@ Queries are language-specific. Different language grammars use different <em>nod
 
 <span class="c1">;; Last argument is a string.</span>
 <span class="p">(</span><span class="nf">call_expression</span> <span class="p">(</span><span class="nf">arguments</span> <span class="p">(</span><span class="nf">string_literal</span><span class="p">)</span> <span class="o">.</span><span class="p">))</span>
-</code></pre></div><p>{{% notice info %}}
-The dot symbol <code>.</code> is not a valid read syntax in Emacs Lisp, so it has to be escaped in query patterns embedded in code:</p>
+</code></pre></div>
+<div class="notices info" ><p><p>The dot symbol <code>.</code> is not a valid read syntax in Emacs Lisp, so it has to be escaped in query patterns embedded in code:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">tree-sitter-hl-add-patterns</span> <span class="ss">&#39;c</span>
  <span class="p">[((</span><span class="nv">call_expression</span>
     <span class="nv">function:</span> <span class="p">(</span><span class="nv">identifier</span><span class="p">)</span> <span class="nv">@keyword</span>
     <span class="nv">arguments:</span> <span class="p">(</span><span class="nv">argument_list</span> <span class="nv">\.</span> <span class="p">(</span><span class="nv">string_literal</span><span class="p">)</span> <span class="nv">@function</span><span class="p">))</span>
    <span class="p">(</span><span class="o">.</span><span class="nv">eq?</span> <span class="nv">@keyword</span> <span class="s">&#34;DEFUN&#34;</span><span class="p">))])</span>
-</code></pre></div><p>{{% /notice %}}</p>
+</code></pre></div></p></div>
+
 <p>For more details, see Tree-sitter&rsquo;s documentation:</p>
 <ul>
 <li><a href="https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries">https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries</a></li>

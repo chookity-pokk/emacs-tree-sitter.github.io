@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-02-12T15:35:05 UTC">
+<meta name="revised" content="2022-02-12T16:29:15 UTC">
 <title>Getting Started :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -220,9 +220,10 @@ if (!doNotTrack) {
 <p>For more details, see <a href="../syntax-highlighting/">Syntax Highlighting</a>.</p>
 <h2 id="view-the-syntax-tree">View the Syntax Tree</h2>
 <p>Run <code>M-x tree-sitter-debug-mode</code> to show the current buffer&rsquo;s syntax tree in a separate buffer.</p>
-<p>{{% notice warning %}}
-Printing the syntax tree can be slow for very large buffers, as it hasn&rsquo;t been optimized yet.
-{{% /notice %}}</p>
+
+<div class="notices warning" ><p><p>Printing the syntax tree can be slow for very large buffers, as it hasn&rsquo;t been optimized yet.</p>
+</p></div>
+
 <h2 id="play-around-with-tree-queries">Play around with Tree Queries</h2>
 <p>Run <code>M-x tree-sitter-query-builder</code> to open the query playground, where you can write tree queries and see matches highlighted in the source buffer.</p>
 <p>Here are some example queries to try:</p>

@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-02-12T15:35:05 UTC">
+<meta name="revised" content="2022-02-12T16:29:15 UTC">
 <title>Parsing :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -208,9 +208,10 @@ if (!doNotTrack) {
     
 
     
-    <p>{{% notice info %}}
-The minor mode <code>tree-sitter-mode</code> provides the high-level interface for working with an up-to-date buffer-local syntax tree. <a href="/tree-sitter-mode/#writing-a-dependent-minor-mode">Writing a Dependent Minor Mode</a> is recommended over directly using the low level parsing APIs below.
-{{% /notice %}}</p>
+    
+<div class="notices info" ><p><p>The minor mode <code>tree-sitter-mode</code> provides the high-level interface for working with an up-to-date buffer-local syntax tree. <a href="/tree-sitter-mode/#writing-a-dependent-minor-mode">Writing a Dependent Minor Mode</a> is recommended over directly using the low level parsing APIs below.</p>
+</p></div>
+
 <p>Parsing is done through stateful parser objects.</p>
 <dl>
 <dt><code>tsc-make-parser</code></dt>

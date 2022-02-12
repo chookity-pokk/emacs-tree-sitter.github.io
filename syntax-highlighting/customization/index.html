@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-02-12T15:35:05 UTC">
+<meta name="revised" content="2022-02-12T16:29:15 UTC">
 <title>Customization :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -264,13 +264,14 @@ if (!doNotTrack) {
 		<span class="nv">arguments:</span> <span class="p">(</span><span class="nv">argument_list</span>
 			    <span class="p">(</span><span class="nv">string_literal</span><span class="p">)</span> <span class="nv">@function</span><span class="p">))</span>
 	       <span class="p">(</span><span class="o">.</span><span class="nv">eq?</span> <span class="nv">@keyword</span> <span class="s">&#34;DEFUN&#34;</span><span class="p">))]))))</span>
-</code></pre></div><p>{{% notice info %}}
-When a node matches multiple patterns in a highlighting query, earlier patterns are prioritized.</p>
+</code></pre></div>
+<div class="notices info" ><p><p>When a node matches multiple patterns in a highlighting query, earlier patterns are prioritized.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="c1">;; More specific patterns should be written earlier.</span>
 <span class="p">((</span><span class="nf">lifetime</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@type</span><span class="o">.</span><span class="nv">builtin</span><span class="p">)</span>
  <span class="p">(</span><span class="o">.</span><span class="nv">eq?</span> <span class="nv">@type</span><span class="o">.</span><span class="nv">builtin</span> <span class="s">&#34;static&#34;</span><span class="p">))</span>
 <span class="p">(</span><span class="nf">lifetime</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@label</span><span class="p">)</span>
-</code></pre></div><p>{{% /notice %}}</p>
+</code></pre></div></p></div>
+
 
 
 

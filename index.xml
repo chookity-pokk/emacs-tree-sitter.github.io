@@ -13,7 +13,7 @@
       
       <guid>https://emacs-tree-sitter.github.io/installation/</guid>
       <description>tree-sitter requires Emacs 25.1 or above, built with dynamic module support. Some Emacs distributions have this disabled by default. To check whether your Emacs has dynamic module support enabled, try evaluating one of these:
-(functionp &amp;#39;module-load) ; should be t module-file-suffix ; should be non-nil {{% notice note %}} Upon byte compilation and first load, the package tree-sitter (tsc) will try to obtain the dynamic module using 2 mechanisms:
+(functionp &amp;#39;module-load) ; should be t module-file-suffix ; should be non-nil  Upon byte compilation and first load, the package tree-sitter (tsc) will try to obtain the dynamic module using 2 mechanisms:
  Downloading a pre-compiled binary from GitHub.</description>
     </item>
     
@@ -48,8 +48,8 @@ The variable tree-sitter-load-path is a list of directories that the function tr
       
       <guid>https://emacs-tree-sitter.github.io/syntax-highlighting/queries/</guid>
       <description>A query is a set of patterns, written in a Lisp-like syntax.
-{{% notice info %}} Queries are language-specific. Different language grammars use different node types and field names. Examples in this section apply to Rust. {{% /notice %}}
-Patterns A pattern is an S-expression (Lisp form), optionally preceded by a field name, suffixed with a quantifier, and/or followed by a capture name.
+Queries are language-specific. Different language grammars use different node types and field names. Examples in this section apply to Rust.
+ Patterns A pattern is an S-expression (Lisp form), optionally preceded by a field name, suffixed with a quantifier, and/or followed by a capture name.
 A node form is a list form whose first element is a symbol (except for the special symbols, described later).</description>
     </item>
     
@@ -72,7 +72,8 @@ Face Mappings By default, when the highlighting query associates a node with CAP
       <guid>https://emacs-tree-sitter.github.io/syntax-highlighting/interface-for-modes/</guid>
       <description>Major modes that want to integrate with tree-sitter-hl-mode should set the variable tree-sitter-hl-default-patterns. It plays a similar role to font-lock-defaults.
 Minor modes that want to customize syntax highlighting should call the function tree-sitter-hl-add-patterns. It plays a similar role to font-lock-add-keywords.
-{{% notice info %}} The language bundle tree-sitter-langs provides highlighting queries for several languages. These queries will be used when the corresponding major modes do not set tree-sitter-hl-default-patterns. {{% /notice %}}</description>
+The language bundle tree-sitter-langs provides highlighting queries for several languages. These queries will be used when the corresponding major modes do not set tree-sitter-hl-default-patterns.
+ </description>
     </item>
     
     <item>
@@ -81,9 +82,9 @@ Minor modes that want to customize syntax highlighting should call the function 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://emacs-tree-sitter.github.io/api/parsing/</guid>
-      <description>{{% notice info %}} The minor mode tree-sitter-mode provides the high-level interface for working with an up-to-date buffer-local syntax tree. Writing a Dependent Minor Mode is recommended over directly using the low level parsing APIs below. {{% /notice %}}
-Parsing is done through stateful parser objects.
- tsc-make-parser Create a new parser without setting a language. tsc-set-language parser language Set a parser&amp;rsquo;s active language. tsc-parse-string parser string Parse a single string of source code.</description>
+      <description>The minor mode tree-sitter-mode provides the high-level interface for working with an up-to-date buffer-local syntax tree. Writing a Dependent Minor Mode is recommended over directly using the low level parsing APIs below.
+ Parsing is done through stateful parser objects.
+ tsc-make-parser Create a new parser without setting a language. tsc-set-language parser language Set a parser&amp;rsquo;s active language. tsc-parse-string parser string Parse a single string of source code. This is useful for quick, one-off parsing needs.</description>
     </item>
     
     <item>
@@ -92,8 +93,8 @@ Parsing is done through stateful parser objects.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://emacs-tree-sitter.github.io/api/inspecting/</guid>
-      <description>{{% notice info %}} If your code works with a large number of nodes, consider using the traversal APIs, which are more efficient. {{% /notice %}}
-The result of parsing is a syntax tree of the entire source code (string, buffer). It contains syntax nodes that indicate the structure of the source code. Tree-sitter provides APIs to inspect and traverse this structure, but does not support modifying it directly (for the purposes of source code transformation or generation).</description>
+      <description>If your code works with a large number of nodes, consider using the traversal APIs, which are more efficient.
+ The result of parsing is a syntax tree of the entire source code (string, buffer). It contains syntax nodes that indicate the structure of the source code. Tree-sitter provides APIs to inspect and traverse this structure, but does not support modifying it directly (for the purposes of source code transformation or generation).</description>
     </item>
     
     <item>
@@ -104,7 +105,7 @@ The result of parsing is a syntax tree of the entire source code (string, buffer
       <guid>https://emacs-tree-sitter.github.io/api/walking/</guid>
       <description>Tree-walking functions enable efficient traversal of the syntax tree.
 When dealing with a large number of nodes, working with node objects creates a huge pressure on the garbage collector. For better performance, it&amp;rsquo;s advisable to extract and work with individual node properties. The constant tsc-valid-node-props holds the list of all available property names:
-&amp;#39;(:type :field ;node&amp;#39;s field name within the parent node :depth ;node&amp;#39;s depth, relative to the iterator&amp;#39;s start :named-p :extra-p :error-p :missing-p :has-error-p :start-byte :end-byte :start-point :end-point :range :byte-range) {{% notice note %}} Functions that accept a vector of property names can also accept a single property name, in which case only that property is returned/yielded, instead of a vector of properties.</description>
+&amp;#39;(:type :field ;node&amp;#39;s field name within the parent node :depth ;node&amp;#39;s depth, relative to the iterator&amp;#39;s start :named-p :extra-p :error-p :missing-p :has-error-p :start-byte :end-byte :start-point :end-point :range :byte-range)  Functions that accept a vector of property names can also accept a single property name, in which case only that property is returned/yielded, instead of a vector of properties.</description>
     </item>
     
     <item>
@@ -126,7 +127,7 @@ When the query is executed, each captured node is tagged with a symbol, whose na
       <guid>https://emacs-tree-sitter.github.io/tree-sitter-mode/</guid>
       <description>tree-sitter-mode is a minor mode that provides a buffer-local up-to-date syntax tree.
 TODO: Write this.
- Hook: tree-sitter-after-on-hook &amp;lt;br&amp;gt; Hook: tree-sitter-after-first-parse-hook &amp;lt;br&amp;gt; Hook: tree-sitter-after-change-functions &amp;lt;br&amp;gt; Variable: tree-sitter-major-mode-language-alist &amp;lt;br&amp;gt; Variable: tree-sitter-language &amp;lt;br&amp;gt; Variable: tree-sitter-tree &amp;lt;br&amp;gt; Function: tree-sitter-node-at-pos [node-type] [pos] &amp;lt;br&amp;gt;  Writing a Dependent Minor Mode See the docstring of tree-sitter--handle-dependent.</description>
+ Hook: tree-sitter-after-on-hook  Hook: tree-sitter-after-first-parse-hook  Hook: tree-sitter-after-change-functions  Variable: tree-sitter-major-mode-language-alist  Variable: tree-sitter-language  Variable: tree-sitter-tree  Function: tree-sitter-node-at-pos [node-type] [pos]   Writing a Dependent Minor Mode See the docstring of tree-sitter--handle-dependent.</description>
     </item>
     
   </channel>

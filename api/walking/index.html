@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-02-12T15:35:05 UTC">
+<meta name="revised" content="2022-02-12T16:29:15 UTC">
 <title>Walking :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -222,9 +222,10 @@ if (!doNotTrack) {
   <span class="nb">:start-byte</span> <span class="nb">:end-byte</span>
   <span class="nb">:start-point</span> <span class="nb">:end-point</span>
   <span class="nb">:range</span> <span class="nb">:byte-range</span><span class="p">)</span>
-</code></pre></div><p>{{% notice note %}}
-Functions that accept a vector of property names can also accept a single property name, in which case only that property is returned/yielded, instead of a vector of properties.
-{{% /notice %}}</p>
+</code></pre></div>
+<div class="notices note" ><p><p>Functions that accept a vector of property names can also accept a single property name, in which case only that property is returned/yielded, instead of a vector of properties.</p>
+</p></div>
+
 <h2 id="traversing-all-descendant-nodes">Traversing All Descendant Nodes</h2>
 <p>These functions are high-level APIs that allow traversing the syntax tree in depth-first pre-order.</p>
 <dl>
@@ -262,9 +263,11 @@ Functions that accept a vector of property names can also accept a single proper
 <dt><code>tsc-make-cursor</code> <em><code>tree-or-node</code></em></dt>
 <dd>Create a new cursor on a node. The cursor <em>cannot move out</em> of this node. If called on a tree, the cursor is created on the tree&rsquo;s root node.</dd>
 <dt><code>tsc-goto-parent</code> <em><code>cursor</code></em></dt>
-<dd>&lt;br&gt;</dd>
+<dd><!-- raw HTML omitted -->
+</dd>
 <dt><code>tsc-goto-first-child</code> <em><code>cursor</code></em></dt>
-<dd>&lt;br&gt;</dd>
+<dd><!-- raw HTML omitted -->
+</dd>
 <dt><code>tsc-goto-next-sibling</code> <em><code>cursor</code></em></dt>
 <dd>Attempt to move the cursor to the parent node, the first child node, or the next sibling node. This function returns t if the move was successful, nil if the move is invalid.</dd>
 <dt><code>tsc-goto-first-child-for-position</code> <em><code>cursor pos</code></em></dt>
