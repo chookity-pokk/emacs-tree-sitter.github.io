@@ -4,7 +4,7 @@
 	"title": "Tree-sitter",
 	"tags": [],
 	"description": "",
-	"content": "tree-sitter is an Emacs binding for Tree-sitter, an incremental parsing system.\nIt aims to be the foundation for a new breed of Emacs packages that understand code structurally. For example:\n Faster, fine-grained code highlighting. More flexible code folding. Structural editing (like Paredit, or even better) for non-Lisp code. More informative indexing for imenu.  The author of Tree-sitter articulated its merits a lot better in this Strange Loop talk.\n"
+	"content": "For Emacs 29+, please use the built-in integration instead.\ntree-sitter is an Emacs binding for Tree-sitter, an incremental parsing system.\nIt aims to be the foundation for a new breed of Emacs packages that understand code structurally. For example:\n Faster, fine-grained code highlighting. More flexible code folding. Structural editing (like Paredit, or even better) for non-Lisp code. More informative indexing for imenu.  The author of Tree-sitter articulated its merits a lot better in this Strange Loop talk.\n"
 },
 {
 	"uri": "https://emacs-tree-sitter.github.io/installation/",
