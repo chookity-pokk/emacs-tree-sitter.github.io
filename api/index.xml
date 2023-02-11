@@ -13,8 +13,8 @@
       
       <guid>https://emacs-tree-sitter.github.io/api/parsing/</guid>
       <description>The minor mode tree-sitter-mode provides the high-level interface for working with an up-to-date buffer-local syntax tree. Writing a Dependent Minor Mode is recommended over directly using the low level parsing APIs below.
- Parsing is done through stateful parser objects.
- tsc-make-parser Create a new parser without setting a language. tsc-set-language parser language Set a parser&amp;rsquo;s active language. tsc-parse-string parser string Parse a single string of source code. This is useful for quick, one-off parsing needs.</description>
+Parsing is done through stateful parser objects.
+tsc-make-parser Create a new parser without setting a language. tsc-set-language parser language Set a parser&amp;rsquo;s active language. tsc-parse-string parser string Parse a single string of source code. This is useful for quick, one-off parsing needs.</description>
     </item>
     
     <item>
@@ -24,7 +24,7 @@
       
       <guid>https://emacs-tree-sitter.github.io/api/inspecting/</guid>
       <description>If your code works with a large number of nodes, consider using the traversal APIs, which are more efficient.
- The result of parsing is a syntax tree of the entire source code (string, buffer). It contains syntax nodes that indicate the structure of the source code. Tree-sitter provides APIs to inspect and traverse this structure, but does not support modifying it directly (for the purposes of source code transformation or generation).</description>
+The result of parsing is a syntax tree of the entire source code (string, buffer). It contains syntax nodes that indicate the structure of the source code. Tree-sitter provides APIs to inspect and traverse this structure, but does not support modifying it directly (for the purposes of source code transformation or generation).</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <guid>https://emacs-tree-sitter.github.io/api/walking/</guid>
       <description>Tree-walking functions enable efficient traversal of the syntax tree.
 When dealing with a large number of nodes, working with node objects creates a huge pressure on the garbage collector. For better performance, it&amp;rsquo;s advisable to extract and work with individual node properties. The constant tsc-valid-node-props holds the list of all available property names:
-&amp;#39;(:type :field ;node&amp;#39;s field name within the parent node :depth ;node&amp;#39;s depth, relative to the iterator&amp;#39;s start :named-p :extra-p :error-p :missing-p :has-error-p :start-byte :end-byte :start-point :end-point :range :byte-range)  Functions that accept a vector of property names can also accept a single property name, in which case only that property is returned/yielded, instead of a vector of properties.</description>
+&amp;#39;(:type :field ;node&amp;#39;s field name within the parent node :depth ;node&amp;#39;s depth, relative to the iterator&amp;#39;s start :named-p :extra-p :error-p :missing-p :has-error-p :start-byte :end-byte :start-point :end-point :range :byte-range) Functions that accept a vector of property names can also accept a single property name, in which case only that property is returned/yielded, instead of a vector of properties.</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@ When dealing with a large number of nodes, working with node objects creates a h
       
       <guid>https://emacs-tree-sitter.github.io/api/querying/</guid>
       <description>Tree-sitter provides a Lisp-like query language to search for patterns in the syntax tree.
- tsc-make-query language patterns [tag-assigner] Create a new query for the given language. This query cannot be run on syntax nodes of other languages. Patterns can be specified as either a sequence (usually a vector, for convenience) of S-expressions, or their textual representations, concatenated into a string.
+tsc-make-query language patterns [tag-assigner] Create a new query for the given language. This query cannot be run on syntax nodes of other languages. Patterns can be specified as either a sequence (usually a vector, for convenience) of S-expressions, or their textual representations, concatenated into a string.
 When the query is executed, each captured node is tagged with a symbol, whose name is the corresponding capture name defined in patterns.</description>
     </item>
     

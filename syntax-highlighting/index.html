@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-12-31T13:54:15 UTC">
+<meta name="revised" content="2023-02-11T16:37:57 &#43;07">
 <title>Syntax Highlighting :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -36,6 +36,14 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
+
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "fshg961bfx");
+</script>
 
     
   </head>
@@ -86,7 +94,7 @@ if (!doNotTrack) {
           Languages
         </a>
     </li>
-    <li data-nav-id="https://emacs-tree-sitter.github.io/syntax-highlighting/" class="dd-item parent active alwaysopen haschildren
+    <li data-nav-id="https://emacs-tree-sitter.github.io/syntax-highlighting/" class="dd-item active alwaysopen haschildren
         ">
       <a href="/syntax-highlighting/">Syntax Highlighting</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i>
@@ -210,11 +218,11 @@ if (!doNotTrack) {
 
 <p>The minor mode <code>tree-sitter-hl-mode</code> provides the framework for syntax highlighting. It overrides the regex-based highlighting provided by <code>font-lock-mode</code>, using the syntax tree provided by <code>tree-sitter-mode</code>. It is based on <a href="/syntax-highlighting/queries/"><strong>tree queries</strong></a>, a system for pattern-matching on Tree-sitter&rsquo;s syntax trees.</p>
 <p>It can be toggled in a buffer by the command <code>tree-sitter-hl-mode</code>, or enabled through major mode hooks:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;rust-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-hl-mode</span><span class="p">)</span>
-</code></pre></div><p>To enable it whenever possible (assuming the language major modes were already installed):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-tree-sitter-mode</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;tree-sitter-after-on-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-hl-mode</span><span class="p">)</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;rust-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-hl-mode</span><span class="p">)</span>
+</span></span></code></pre></div><p>To enable it whenever possible (assuming the language major modes were already installed):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-tree-sitter-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;tree-sitter-after-on-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-hl-mode</span><span class="p">)</span>
+</span></span></code></pre></div>
 <div class="notices info" ><p><p>Like <code>font-lock-mode</code>, <code>tree-sitter-hl-mode</code> provides only the mechanisms. The actual highlighting rules are provided by language-specific packages, or a language bundle like <code>tree-sitter-langs</code>.</p>
 </p></div>
 

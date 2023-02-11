@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-12-31T13:54:15 UTC">
+<meta name="revised" content="2023-02-11T16:37:57 &#43;07">
 <title>Walking :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -36,6 +36,14 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
+
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "fshg961bfx");
+</script>
 
     
   </head>
@@ -215,14 +223,14 @@ if (!doNotTrack) {
     
     <p>Tree-walking functions enable efficient traversal of the syntax tree.</p>
 <p>When dealing with a large number of nodes, working with node objects creates a huge pressure on the garbage collector. For better performance, it&rsquo;s advisable to extract and work with individual node properties. The constant <code>tsc-valid-node-props</code> holds the list of all available property names:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="o">&#39;</span><span class="p">(</span><span class="nb">:type</span>
-  <span class="nb">:field</span> <span class="c1">;node&#39;s field name within the parent node</span>
-  <span class="nb">:depth</span> <span class="c1">;node&#39;s depth, relative to the iterator&#39;s start</span>
-  <span class="nb">:named-p</span> <span class="nb">:extra-p</span> <span class="nb">:error-p</span> <span class="nb">:missing-p</span> <span class="nb">:has-error-p</span>
-  <span class="nb">:start-byte</span> <span class="nb">:end-byte</span>
-  <span class="nb">:start-point</span> <span class="nb">:end-point</span>
-  <span class="nb">:range</span> <span class="nb">:byte-range</span><span class="p">)</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="o">&#39;</span><span class="p">(</span><span class="nb">:type</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:field</span> <span class="c1">;node&#39;s field name within the parent node</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:depth</span> <span class="c1">;node&#39;s depth, relative to the iterator&#39;s start</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:named-p</span> <span class="nb">:extra-p</span> <span class="nb">:error-p</span> <span class="nb">:missing-p</span> <span class="nb">:has-error-p</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:start-byte</span> <span class="nb">:end-byte</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:start-point</span> <span class="nb">:end-point</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:range</span> <span class="nb">:byte-range</span><span class="p">)</span>
+</span></span></code></pre></div>
 <div class="notices note" ><p><p>Functions that accept a vector of property names can also accept a single property name, in which case only that property is returned/yielded, instead of a vector of properties.</p>
 </p></div>
 
@@ -231,31 +239,31 @@ if (!doNotTrack) {
 <dl>
 <dt><code>tsc-traverse-do</code> <em><code>(vars tree-or-node) body</code></em></dt>
 <dd>Evaluate <code>body</code> with <code>vars</code> bound to corresponding properties of each traversed node.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">tsc-traverse-do</span> <span class="p">([</span><span class="nv">type</span> <span class="nv">depth</span> <span class="nv">named-p</span><span class="p">]</span> <span class="nv">tree</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">when</span> <span class="nv">named-p</span>                         <span class="c1">;AST</span>
-    <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">make-string</span> <span class="nv">depth</span> <span class="nv">\?</span> <span class="p">)</span>     <span class="c1">;indentation</span>
-	    <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%S&#34;</span> <span class="nv">type</span><span class="p">)</span> <span class="s">&#34;\n&#34;</span><span class="p">)))</span>
-</code></pre></div></dd>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">tsc-traverse-do</span> <span class="p">([</span><span class="nv">type</span> <span class="nv">depth</span> <span class="nv">named-p</span><span class="p">]</span> <span class="nv">tree</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">when</span> <span class="nv">named-p</span>                         <span class="c1">;AST</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">make-string</span> <span class="nv">depth</span> <span class="nv">\?</span> <span class="p">)</span>     <span class="c1">;indentation</span>
+</span></span><span class="line"><span class="cl">	    <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%S&#34;</span> <span class="nv">type</span><span class="p">)</span> <span class="s">&#34;\n&#34;</span><span class="p">)))</span>
+</span></span></code></pre></div></dd>
 <dt><code>tsc-traverse-mapc</code> <em><code>func tree-or-node [props]</code></em></dt>
 <dd>Call <code>func</code> for each traversed node, passing the node as the argument. If <code>props</code> is a vector of property names, <code>func</code> receives a vector containing the node&rsquo;s properties instead. <strong>Do not keep a reference to the vector</strong>, as it is reused across invocations. Use <code>pcase-let</code> to extract the properties instead.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">tsc-traverse-mapc</span>
- <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">props</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">pcase-let</span> <span class="p">((</span><span class="o">`</span><span class="p">[</span><span class="o">,</span><span class="nv">type</span> <span class="o">,</span><span class="nv">depth</span> <span class="o">,</span><span class="nv">named-p</span><span class="p">]</span> <span class="nv">props</span><span class="p">))</span>
-     <span class="p">(</span><span class="nb">when</span> <span class="nv">named-p</span>                          <span class="c1">;AST</span>
-       <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">make-string</span> <span class="nv">depth</span> <span class="nv">\?</span> <span class="p">)</span>      <span class="c1">;indentation</span>
-	       <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%S&#34;</span> <span class="nv">type</span><span class="p">)</span> <span class="s">&#34;\n&#34;</span><span class="p">))))</span>
- <span class="nv">tree</span>
- <span class="p">[</span><span class="nb">:type</span> <span class="nb">:depth</span> <span class="nb">:named-p</span><span class="p">])</span>
-</code></pre></div></dd>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">tsc-traverse-mapc</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">props</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nb">pcase-let</span> <span class="p">((</span><span class="o">`</span><span class="p">[</span><span class="o">,</span><span class="nv">type</span> <span class="o">,</span><span class="nv">depth</span> <span class="o">,</span><span class="nv">named-p</span><span class="p">]</span> <span class="nv">props</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="nb">when</span> <span class="nv">named-p</span>                          <span class="c1">;AST</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">make-string</span> <span class="nv">depth</span> <span class="nv">\?</span> <span class="p">)</span>      <span class="c1">;indentation</span>
+</span></span><span class="line"><span class="cl">	       <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%S&#34;</span> <span class="nv">type</span><span class="p">)</span> <span class="s">&#34;\n&#34;</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">tree</span>
+</span></span><span class="line"><span class="cl"> <span class="p">[</span><span class="nb">:type</span> <span class="nb">:depth</span> <span class="nb">:named-p</span><span class="p">])</span>
+</span></span></code></pre></div></dd>
 <dt><code>tsc-traverse-iter</code> <em><code>tree-or-node [props]</code></em></dt>
 <dd>Create an iterator that yields traversed nodes. If <code>props</code> is a vector of property names, the iterator yields a vector containing the node&rsquo;s properties instead. <strong>Do not keep a reference to the vector</strong>, as it is reused across iterations. Use <code>pcase-let</code> to extract the properties instead.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">iter-do</span> <span class="p">(</span><span class="nv">props</span> <span class="p">(</span><span class="nv">tsc-traverse-iter</span>
-		 <span class="nv">tree</span> <span class="p">[</span><span class="nb">:type</span> <span class="nb">:depth</span> <span class="nb">:named-p</span><span class="p">]))</span>
-  <span class="p">(</span><span class="nb">pcase-let</span> <span class="p">((</span><span class="o">`</span><span class="p">[</span><span class="o">,</span><span class="nv">type</span> <span class="o">,</span><span class="nv">depth</span> <span class="o">,</span><span class="nv">named-p</span><span class="p">]</span> <span class="nv">props</span><span class="p">))</span>
-    <span class="p">(</span><span class="nb">when</span> <span class="nv">named-p</span>                       <span class="c1">;AST</span>
-      <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">make-string</span> <span class="nv">depth</span> <span class="nv">\?</span> <span class="p">)</span>   <span class="c1">;indentation</span>
-	      <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%S&#34;</span> <span class="nv">type</span><span class="p">)</span> <span class="s">&#34;\n&#34;</span><span class="p">))))</span>
-</code></pre></div></dd>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">iter-do</span> <span class="p">(</span><span class="nv">props</span> <span class="p">(</span><span class="nv">tsc-traverse-iter</span>
+</span></span><span class="line"><span class="cl">		 <span class="nv">tree</span> <span class="p">[</span><span class="nb">:type</span> <span class="nb">:depth</span> <span class="nb">:named-p</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">pcase-let</span> <span class="p">((</span><span class="o">`</span><span class="p">[</span><span class="o">,</span><span class="nv">type</span> <span class="o">,</span><span class="nv">depth</span> <span class="o">,</span><span class="nv">named-p</span><span class="p">]</span> <span class="nv">props</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">when</span> <span class="nv">named-p</span>                       <span class="c1">;AST</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">make-string</span> <span class="nv">depth</span> <span class="nv">\?</span> <span class="p">)</span>   <span class="c1">;indentation</span>
+</span></span><span class="line"><span class="cl">	      <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%S&#34;</span> <span class="nv">type</span><span class="p">)</span> <span class="s">&#34;\n&#34;</span><span class="p">))))</span>
+</span></span></code></pre></div></dd>
 </dl>
 <h2 id="walking-step-by-step">Walking Step-by-step</h2>
 <p>These functions are the low-level APIs that allow walking through the syntax tree one node at a time, with the help of a stateful <code>cursor</code> object.</p>
@@ -278,8 +286,8 @@ if (!doNotTrack) {
 <dd>Get the node that the cursor is currently on. If <code>props</code> is a vector of property names, return a vector containing the node&rsquo;s corresponding properties. If <code>output</code> is also non-nil, it must be a vector of the same length, where the properties will be written into.</dd>
 <dt><code>tsc-current-field</code> <em><code>cursor</code></em></dt>
 <dd>Get the field name (as a keyword) associated with the current node. This is equivalent to:
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">tsc-current-node</span> <span class="nv">cursor</span> <span class="nb">:field</span><span class="p">)</span>
-</code></pre></div></dd>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">tsc-current-node</span> <span class="nv">cursor</span> <span class="nb">:field</span><span class="p">)</span>
+</span></span></code></pre></div></dd>
 </dl>
 
 

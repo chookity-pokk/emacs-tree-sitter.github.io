@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-12-31T13:54:15 UTC">
+<meta name="revised" content="2023-02-11T16:37:57 &#43;07">
 <title>Inspecting :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -36,6 +36,14 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
+
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "fshg961bfx");
+</script>
 
     
   </head>
@@ -284,16 +292,16 @@ if (!doNotTrack) {
 </dd>
 <dt><code>tsc-get-nth-named-child</code> <em><code>node nth</code></em></dt>
 <dd>Get a child node by its 0-based index (any, or named only).
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">func</span> <span class="p">(</span><span class="nv">tree-sitter-node-at-pos</span> <span class="ss">&#39;function_item</span><span class="p">)))</span>
-  <span class="p">(</span><span class="nv">tsc-get-nth-child</span> <span class="nv">func</span> <span class="mi">0</span><span class="p">)</span>        <span class="c1">; An &#34;fn&#34; node</span>
-  <span class="p">(</span><span class="nv">tsc-get-nth-named-child</span> <span class="nv">func</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; An &#39;identifier node</span>
-</code></pre></div></dd>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">func</span> <span class="p">(</span><span class="nv">tree-sitter-node-at-pos</span> <span class="ss">&#39;function_item</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">tsc-get-nth-child</span> <span class="nv">func</span> <span class="mi">0</span><span class="p">)</span>        <span class="c1">; An &#34;fn&#34; node</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">tsc-get-nth-named-child</span> <span class="nv">func</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; An &#39;identifier node</span>
+</span></span></code></pre></div></dd>
 <dt><code>tsc-get-child-by-field</code> <em><code>node field</code></em></dt>
 <dd>Certain node types assign unique field names to specific child nodes. This function allows retrieving child nodes by their field names, instead of by their indexes. The field name should be specified as a keyword.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="c1">;; Get name of the current function definition.</span>
-<span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">func</span> <span class="p">(</span><span class="nv">tree-sitter-node-at-pos</span> <span class="ss">&#39;function_item</span><span class="p">)))</span>
-  <span class="p">(</span><span class="nv">tsc-node-text</span> <span class="p">(</span><span class="nv">tsc-get-child-by-field</span> <span class="nv">func</span> <span class="nb">:name</span><span class="p">)))</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="c1">;; Get name of the current function definition.</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">func</span> <span class="p">(</span><span class="nv">tree-sitter-node-at-pos</span> <span class="ss">&#39;function_item</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">tsc-node-text</span> <span class="p">(</span><span class="nv">tsc-get-child-by-field</span> <span class="nv">func</span> <span class="nb">:name</span><span class="p">)))</span>
+</span></span></code></pre></div>
 <div class="notices info" ><p><p>In Tree-sitter&rsquo;s <a href="https://tree-sitter.github.io/tree-sitter/using-parsers#node-field-names">documentation</a>, due to the low-level nature of C and JSON, field names are specified as strings. Representing field names as keywords makes it more Lisp-idiomatic.</p>
 </p></div>
 
@@ -314,11 +322,11 @@ if (!doNotTrack) {
 </dd>
 <dt><code>tsc-get-named-descendant-for-position-range</code> <em><code>node beg end</code></em></dt>
 <dd>Get smallest descendant node that spans the given range.
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="c1">;; Get the syntax node the cursor is on.</span>
-<span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">p</span> <span class="p">(</span><span class="nf">point</span><span class="p">)))</span>
-  <span class="p">(</span><span class="nv">tsc-get-descendant-for-position-range</span>
-   <span class="p">(</span><span class="nv">tsc-root-node</span> <span class="nv">tree-sitter-tree</span><span class="p">)</span> <span class="nv">p</span> <span class="nv">p</span><span class="p">))</span>
-</code></pre></div></dd>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="c1">;; Get the syntax node the cursor is on.</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">p</span> <span class="p">(</span><span class="nf">point</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">tsc-get-descendant-for-position-range</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="nv">tsc-root-node</span> <span class="nv">tree-sitter-tree</span><span class="p">)</span> <span class="nv">p</span> <span class="nv">p</span><span class="p">))</span>
+</span></span></code></pre></div></dd>
 </dl>
 
 

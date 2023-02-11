@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-12-31T13:54:15 UTC">
+<meta name="revised" content="2023-02-11T16:37:57 &#43;07">
 <title>Installation :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -36,6 +36,14 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
+
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "fshg961bfx");
+</script>
 
     
   </head>
@@ -210,10 +218,10 @@ if (!doNotTrack) {
 
     
     <p><code>tree-sitter</code> requires Emacs 25.1 or above, built with dynamic module support. Some Emacs distributions have this disabled by default. To check whether your Emacs has dynamic module support enabled, try evaluating one of these:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nf">functionp</span> <span class="ss">&#39;module-load</span><span class="p">)</span> <span class="c1">; should be t</span>
-
-<span class="nv">module-file-suffix</span> <span class="c1">; should be non-nil</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">functionp</span> <span class="ss">&#39;module-load</span><span class="p">)</span> <span class="c1">; should be t</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">module-file-suffix</span> <span class="c1">; should be non-nil</span>
+</span></span></code></pre></div>
 <div class="notices note" ><p><p>Upon byte compilation and first load, the package <code>tree-sitter</code> (<code>tsc</code>) will try to obtain the dynamic module using 2 mechanisms:</p>
 <ul>
 <li>Downloading a pre-compiled binary from GitHub. This only works for macOS/Linux/Windows on x86_64 machines, and macOS on Apple Silicon.</li>
@@ -232,9 +240,9 @@ if (!doNotTrack) {
 </li>
 <li>
 <p>Load the framework and the language bundle:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-langs</span><span class="p">)</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-langs</span><span class="p">)</span>
+</span></span></code></pre></div></li>
 </ul>
 <h2 id="installing-with-straight-dot-el">Installing with straight.el</h2>
 <ul>
@@ -243,35 +251,35 @@ if (!doNotTrack) {
 </li>
 <li>
 <p>Install <code>tree-sitter</code> and <code>tree-sitter-langs</code> packages.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">straight-use-package</span> <span class="ss">&#39;tree-sitter</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">straight-use-package</span> <span class="ss">&#39;tree-sitter-langs</span><span class="p">)</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">straight-use-package</span> <span class="ss">&#39;tree-sitter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">straight-use-package</span> <span class="ss">&#39;tree-sitter-langs</span><span class="p">)</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Load the framework and the language bundle:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-langs</span><span class="p">)</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-langs</span><span class="p">)</span>
+</span></span></code></pre></div></li>
 </ul>
 <h2 id="installing-from-source">Installing from Source</h2>
 <ul>
 <li>
 <p>Clone the source repository:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git clone https://github.com/emacs-tree-sitter/elisp-tree-sitter
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone https://github.com/emacs-tree-sitter/elisp-tree-sitter
+</span></span></code></pre></div></li>
 <li>
 <p>Add its <code>core</code>, <code>lisp</code> and <code>langs</code> directories to <code>load-path</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&#34;/path-to/emacs-tree-sitter/core&#34;</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&#34;/path-to/emacs-tree-sitter/lisp&#34;</span><span class="p">)</span>
-<span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&#34;/path-to/emacs-tree-sitter/langs&#34;</span><span class="p">)</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&#34;/path-to/emacs-tree-sitter/core&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&#34;/path-to/emacs-tree-sitter/lisp&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&#34;/path-to/emacs-tree-sitter/langs&#34;</span><span class="p">)</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Load the libraries in your config:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-hl</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-langs</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-debug</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-query</span><span class="p">)</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-hl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-langs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-debug</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;tree-sitter-query</span><span class="p">)</span>
+</span></span></code></pre></div></li>
 </ul>
 
 

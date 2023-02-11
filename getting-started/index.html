@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2022-12-31T13:54:15 UTC">
+<meta name="revised" content="2023-02-11T16:37:57 &#43;07">
 <title>Getting Started :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -36,6 +36,14 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
+
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "fshg961bfx");
+</script>
 
     
   </head>
@@ -211,10 +219,10 @@ if (!doNotTrack) {
     
     <p>The minor mode <code>tree-sitter-mode</code> provides a buffer-local syntax tree, which is kept up-to-date with changes to the buffer&rsquo;s text.</p>
 <p>It can be toggled in a buffer by the command <code>tree-sitter-mode</code>, or enabled through major mode hooks:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;rust-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-mode</span><span class="p">)</span>
-</code></pre></div><p>To enable it for all supported major modes:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="p">(</span><span class="nv">global-tree-sitter-mode</span><span class="p">)</span>
-</code></pre></div><p>For the full list of supported major modes, check the variable <code>tree-sitter-major-mode-language-alist</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;rust-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">tree-sitter-mode</span><span class="p">)</span>
+</span></span></code></pre></div><p>To enable it for all supported major modes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-tree-sitter-mode</span><span class="p">)</span>
+</span></span></code></pre></div><p>For the full list of supported major modes, check the variable <code>tree-sitter-major-mode-language-alist</code>.</p>
 <h2 id="turn-on-syntax-highlighting">Turn on Syntax Highlighting</h2>
 <p>Run <code>M-x tree-sitter-hl-mode</code> to replace the regex-based highlighting provided by <code>font-lock-mode</code> with tree-based syntax highlighting.</p>
 <p>For more details, see <a href="../syntax-highlighting/">Syntax Highlighting</a>.</p>
@@ -230,19 +238,19 @@ if (!doNotTrack) {
 <ul>
 <li>
 <p>Rust:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">(</span><span class="nf">function_item</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">impl_item</span> <span class="p">(</span><span class="nf">type_identifier</span><span class="p">)</span> <span class="nv">@impl</span><span class="p">)</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">function_item</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">impl_item</span> <span class="p">(</span><span class="nf">type_identifier</span><span class="p">)</span> <span class="nv">@impl</span><span class="p">)</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Python:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">(</span><span class="nf">class_definition</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@class</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">function_definition</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">class_definition</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@class</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">function_definition</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
+</span></span></code></pre></div></li>
 <li>
 <p>JavaScript:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="p">(</span><span class="nf">function_declaration</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">variable_declarator</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@var</span><span class="p">)</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">function_declaration</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@func</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">variable_declarator</span> <span class="p">(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@var</span><span class="p">)</span>
+</span></span></code></pre></div></li>
 </ul>
 <p>For more details on tree queries, see <a href="/syntax-highlighting/queries/">Queries</a>.</p>
 
