@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2023-02-11T16:37:57 &#43;07">
+<meta name="revised" content="2023-02-11T16:42:51 &#43;07">
 <title>Inspecting :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -249,7 +249,7 @@ if (!doNotTrack) {
 <dd><!-- raw HTML omitted -->
 </dd>
 <dt><code>tsc-node-named-p</code></dt>
-<dd>Tree-sitter&rsquo;s parse tree is a <a href="https://en.wikipedia.org/wiki/Parse_tree">concrete syntax tree</a>, which contains nodes for every single token in the source code, including things which are typically omitted in a simpler <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree</a>, like commas, parentheses, punctuations, keywords.
+<dd>Tree-sitter&rsquo;s parse tree is a <a href="https://en.wikipedia.org/wiki/Parse%5Ftree">concrete syntax tree</a>, which contains nodes for every single token in the source code, including things which are typically omitted in a simpler <a href="https://en.wikipedia.org/wiki/Abstract%5Fsyntax%5Ftree">abstract syntax tree</a>, like commas, parentheses, punctuations, keywords.
 <p>These less important nodes are called <strong>anonymous nodes</strong>. Their node types are strings. For example: <code>&quot;if&quot;</code>, <code>&quot;else&quot;</code>. The more important nodes are call <strong>named nodes</strong>. Their node types are symbols, corresponding to the named rules that define them in the language&rsquo;s grammar. For example: <code>identifier</code>, <code>block</code>, <code>if_expression</code>.</p>
 
 <div class="notices info" ><p><p>In Tree-sitter&rsquo;s <a href="https://tree-sitter.github.io/tree-sitter/using-parsers#static-node-types">documentation</a>, due to the low-level nature of C and JSON, node types are always represented as strings. Representing named node types as symbols makes it more Lisp-idiomatic, and is more consistent with <a href="/syntax-highlighting/queries/#patterns">tree queries</a>.</p>

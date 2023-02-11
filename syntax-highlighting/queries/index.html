@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2023-02-11T16:37:57 &#43;07">
+<meta name="revised" content="2023-02-11T16:42:51 &#43;07">
 <title>Queries :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -278,7 +278,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">call_expression</span>
 </span></span><span class="line"><span class="cl"> <span class="nv">function:</span> <span class="p">[(</span><span class="nf">identifier</span><span class="p">)</span> <span class="nv">@function</span><span class="o">.</span><span class="nv">call</span>
-</span></span><span class="line"><span class="cl">	    <span class="p">(</span><span class="nf">field_expression</span> <span class="nv">field:</span> <span class="p">(</span><span class="nf">field_identifier</span><span class="p">)</span> <span class="nv">@method</span><span class="o">.</span><span class="nv">call</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="nf">field_expression</span> <span class="nv">field:</span> <span class="p">(</span><span class="nf">field_identifier</span><span class="p">)</span> <span class="nv">@method</span><span class="o">.</span><span class="nv">call</span><span class="p">)])</span>
 </span></span></code></pre></div><h2 id="repetitions-and-wildcards">Repetitions and Wildcards</h2>
 <p>A form can be suffixed by one of the <strong>quantification operators</strong>: at-most-once <code>?</code>, at-least-once <code>+</code>, zero-or-more <code>*</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="line"><span class="cl"><span class="c1">;; Match any function call. Capture a string arg, if any.</span>

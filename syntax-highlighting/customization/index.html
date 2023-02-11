@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2023-02-11T16:37:57 &#43;07">
+<meta name="revised" content="2023-02-11T16:42:51 &#43;07">
 <title>Customization :: Emacs Tree-sitter</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -236,14 +236,14 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">add-function</span> <span class="nb">:before-while</span> <span class="p">(</span><span class="nv">local</span> <span class="ss">&#39;tree-sitter-hl-face-mapping-function</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">capture-name</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">(</span><span class="nv">string=</span> <span class="nv">capture-name</span> <span class="s">&#34;keyword&#34;</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">string=</span> <span class="nv">capture-name</span> <span class="s">&#34;keyword&#34;</span><span class="p">)))))</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="c1">;; Highlight Python docstrings with a different face.</span>
 </span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;python-mode-hook</span>
 </span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">add-function</span> <span class="nb">:before-until</span> <span class="p">(</span><span class="nv">local</span> <span class="ss">&#39;tree-sitter-hl-face-mapping-function</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">capture-name</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="p">(</span><span class="nb">pcase</span> <span class="nv">capture-name</span>
-</span></span><span class="line"><span class="cl">	  <span class="p">(</span><span class="s">&#34;doc&#34;</span> <span class="ss">&#39;font-lock-comment-face</span><span class="p">))))))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">pcase</span> <span class="nv">capture-name</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="s">&#34;doc&#34;</span> <span class="ss">&#39;font-lock-comment-face</span><span class="p">))))))</span>
 </span></span></code></pre></div><h2 id="additional-patterns">Additional Patterns</h2>
 <p>You can use the function <code>tree-sitter-hl-add-patterns</code> to add custom highlighting patterns for a specific language, or in a buffer. These patterns will be prioritized over patterns defined by major modes or language bundles (<code>tree-sitter-hl-default-patterns</code>). Below are some examples:</p>
 <p>Language-specific patterns:</p>
@@ -267,11 +267,11 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p>Project-specific patterns (through <code>.dir-locals.el</code>):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="c1">;; Highlight DEFUN macros (in Emacs&#39;s C source).</span>
 </span></span><span class="line"><span class="cl"><span class="p">((</span><span class="nv">c-mode</span> <span class="o">.</span> <span class="p">((</span><span class="nv">tree-sitter-hl--extra-patterns-list</span>
-</span></span><span class="line"><span class="cl">	     <span class="p">[((</span><span class="nv">call_expression</span>
-</span></span><span class="line"><span class="cl">		<span class="nv">function:</span> <span class="p">(</span><span class="nv">identifier</span><span class="p">)</span> <span class="nv">@keyword</span>
-</span></span><span class="line"><span class="cl">		<span class="nv">arguments:</span> <span class="p">(</span><span class="nv">argument_list</span>
-</span></span><span class="line"><span class="cl">			    <span class="p">(</span><span class="nv">string_literal</span><span class="p">)</span> <span class="nv">@function</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">	       <span class="p">(</span><span class="o">.</span><span class="nv">eq?</span> <span class="nv">@keyword</span> <span class="s">&#34;DEFUN&#34;</span><span class="p">))]))))</span>
+</span></span><span class="line"><span class="cl">             <span class="p">[((</span><span class="nv">call_expression</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">function:</span> <span class="p">(</span><span class="nv">identifier</span><span class="p">)</span> <span class="nv">@keyword</span>
+</span></span><span class="line"><span class="cl">                <span class="nv">arguments:</span> <span class="p">(</span><span class="nv">argument_list</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">(</span><span class="nv">string_literal</span><span class="p">)</span> <span class="nv">@function</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">               <span class="p">(</span><span class="o">.</span><span class="nv">eq?</span> <span class="nv">@keyword</span> <span class="s">&#34;DEFUN&#34;</span><span class="p">))]))))</span>
 </span></span></code></pre></div>
 <div class="notices info" ><p><p>When a node matches multiple patterns in a highlighting query, earlier patterns are prioritized.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scheme" data-lang="scheme"><span class="line"><span class="cl"><span class="c1">;; More specific patterns should be written earlier.</span>
